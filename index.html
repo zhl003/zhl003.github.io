@@ -350,8 +350,8 @@
 <li><p>方式一 </p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name SELECT...FROM source_table</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>方式二</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	INSERT INTO VALUES (),(),…()</span><br><span class="line">	```  </span><br><span class="line">	*比一条SQL插入一条数据的方式能减少和数据库的交互，减少数据库WAL（Write-Ahead Logging）日志的生成，提升插入效率*</span><br><span class="line">- 方式三</span><br></pre></td></tr></table></figure>
+<li><p>方式二  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	INSERT INTO VALUES (),(),…()</span><br><span class="line">	```  </span><br><span class="line">	**比一条SQL插入一条数据的方式能减少和数据库的交互，减少数据库WAL（Write-Ahead Logging）日志的生成，提升插入效率**</span><br><span class="line">- 方式三</span><br></pre></td></tr></table></figure>
 <p>   copy aa from ‘/home/digoal/aa.csv’ with (delimiter U&amp;’\0009’);  </p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	**U&amp;&apos;\0009&apos; TAB作为分隔符**	</span><br><span class="line">## RETURNING关键字</span><br><span class="line">``UPDATE|INSERT|DELETE 支持RETURNING返回更改过的数据``</span><br><span class="line">## UPSERT语法</span><br></pre></td></tr></table></figure>
 </li>
