@@ -346,39 +346,26 @@
       
         
           
-            <h1 id="PostgreSQL-语法特性"><a href="#PostgreSQL-语法特性" class="headerlink" title="PostgreSQL 语法特性"></a>PostgreSQL 语法特性</h1><ul>
-<li><p>批量插入</p>
-<ul>
-<li><p>方式一</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name SELECT...FROM source_table</span><br></pre></td></tr></table></figure>
+            <h1 id="PostgreSQL-语法特性"><a href="#PostgreSQL-语法特性" class="headerlink" title="PostgreSQL 语法特性"></a>PostgreSQL 语法特性</h1><h2 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h2><ul>
+<li><p>方式一 </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO table_name SELECT...FROM source_table</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>方式二</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO VALUES (),(),…()</span><br></pre></td></tr></table></figure>
-<p><em>比一条SQL插入一条数据的方式能减少和数据库的交互，减少数据库WAL（Write-Ahead Logging）日志的生成，提升插入效率</em></p>
-</li>
-<li>方式三<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy aa from &apos;/home/digoal/aa.csv&apos; with (delimiter U&amp;&apos;\0009&apos;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>U&amp;’\0009’ TAB作为分隔符    </li>
-</ul>
-</li>
-<li>RETURNING返回修改的数据<br><code>UPDATE|INSERT|DELETE 支持RETURNING返回更改过的数据</code></li>
-<li>UPSERT语法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into table_name values(...) on conflict (conflict_target) </span><br><span class="line">DO NOTHING    --什么也不做</span><br><span class="line">DO UPDATE SET -- 更新</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	INSERT INTO VALUES (),(),…()</span><br><span class="line">	```  </span><br><span class="line">	*比一条SQL插入一条数据的方式能减少和数据库的交互，减少数据库WAL（Write-Ahead Logging）日志的生成，提升插入效率*</span><br><span class="line">- 方式三</span><br></pre></td></tr></table></figure>
+<p>   copy aa from ‘/home/digoal/aa.csv’ with (delimiter U&amp;’\0009’);  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	**U&amp;&apos;\0009&apos; TAB作为分隔符**	</span><br><span class="line">## RETURNING关键字</span><br><span class="line">``UPDATE|INSERT|DELETE 支持RETURNING返回更改过的数据``</span><br><span class="line">## UPSERT语法</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><strong>conflict_target字段必须为主键或者唯一键</strong></p>
-<ul>
-<li>数据抽样<ul>
-<li>BERNOULLI抽样方式<br>更好的随机性,但比SYSTEM抽样方式性能低.</li>
-<li>SYSTEM抽样<br>随机抽取表上数据块的数据.</li>
-</ul>
-</li>
-<li>聚合函数<ul>
-<li>string_agg(expression, delimiter)<br><strong>函数返回的类型和输入参数类型一致</strong></li>
-<li>array_agg(expression)<br><strong>返回数组类型</strong></li>
-</ul>
-</li>
+<p>insert into table_name values(…) on conflict (conflict_target)<br>DO NOTHING    –什么也不做<br>DO UPDATE SET – 更新<br><code>`</code><br><strong>conflict_target字段必须为主键或者唯一键</strong></p>
+<h2 id="数据抽样"><a href="#数据抽样" class="headerlink" title="数据抽样"></a>数据抽样</h2><pre><code>- BERNOULLI抽样方式  
+</code></pre><p>更好的随机性,但比SYSTEM抽样方式性能低.</p>
+<pre><code>- SYSTEM抽样  
+</code></pre><p>随机抽取表上数据块的数据.</p>
+<h2 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h2><pre><code>- string_agg(expression, delimiter)  
+**函数返回的类型和输入参数类型一致**
+- array_agg(expression)  
+**返回数组类型**
+</code></pre><ul>
 <li>窗口函数</li>
 </ul>
 <table>
