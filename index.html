@@ -253,6 +253,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/31/docker-安装oracle-12c/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hualong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/lion.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/31/docker-安装oracle-12c/" itemprop="url">docker 安装oracle 12c</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-31T17:39:37+08:00">
+                2019-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/31/docker-安装oracle-12c/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/31/docker-安装oracle-12c/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/29/PostgreSQL-语法特性/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -665,7 +794,7 @@
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><code>中国辽宁沈阳沈河区</code></p>
 <p><em>RECURSIVE：引用自己的输出</em><br><em>string_agg: PG聚合函数，类比Oracle的listagg</em></p>
 <h1 id="Oracle实现"><a href="#Oracle实现" class="headerlink" title="Oracle实现"></a>Oracle实现</h1><h2 id="创建示例数据-1"><a href="#创建示例数据-1" class="headerlink" title="创建示例数据"></a>创建示例数据</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> test_area(<span class="keyword">id</span> <span class="built_in">int</span>,<span class="keyword">name</span> <span class="built_in">varchar</span>(<span class="number">32</span>),fatherid <span class="built_in">int</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">'中国'</span>   ,<span class="number">0</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">2</span>, <span class="string">'辽宁'</span>   ,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">3</span>, <span class="string">'山东'</span>   ,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">4</span>, <span class="string">'沈阳'</span>   ,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">5</span>, <span class="string">'大连'</span>   ,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">6</span>, <span class="string">'济南'</span>   ,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">7</span>, <span class="string">'和平区'</span> ,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> test_area <span class="keyword">VALUES</span> (<span class="number">8</span>, <span class="string">'沈河区'</span> ,<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
-<h2 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">listagg</span>(<span class="keyword">name</span>, <span class="string">''</span>) <span class="keyword">within</span></span><br><span class="line"><span class="keyword">group</span> (</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span>)</span><br><span class="line"><span class="keyword">from</span> test_area</span><br><span class="line"><span class="keyword">start</span> <span class="keyword">with</span> <span class="keyword">id</span>=<span class="number">8</span> <span class="keyword">connect</span> <span class="keyword">by</span></span><br><span class="line"><span class="keyword">prior</span> FATHERID=<span class="keyword">id</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span></span><br></pre></td></tr></table></figure>
+<h2 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">listagg</span>(<span class="keyword">name</span>, <span class="string">''</span>)  <span class="keyword">within</span> </span><br><span class="line"><span class="keyword">group</span> (</span><br><span class="line">       <span class="keyword">order</span> <span class="keyword">by</span> <span class="keyword">id</span>) <span class="keyword">as</span> <span class="keyword">name</span></span><br><span class="line"><span class="keyword">from</span> test_area</span><br><span class="line"><span class="keyword">start</span> <span class="keyword">with</span> <span class="keyword">id</span>=<span class="number">8</span> <span class="keyword">connect</span> <span class="keyword">by</span></span><br><span class="line"><span class="keyword">prior</span> FATHERID=<span class="keyword">id</span></span><br></pre></td></tr></table></figure>
 <h2 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h2><p><code>中国辽宁沈阳沈河区</code></p>
 
           
@@ -965,7 +1094,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
